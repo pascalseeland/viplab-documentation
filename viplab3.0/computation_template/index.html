@@ -12,11 +12,11 @@
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -170,7 +170,7 @@
             
             <li class="nav-item" data-level="1"><a href="#computation-template-json-message" class="nav-link">Computation Template JSON Message</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#example-informal" class="nav-link">Example (informal)</a>
+            <li class="nav-item" data-level="2"><a href="#examples-informal" class="nav-link">Examples (informal)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -191,82 +191,390 @@
 <li>the definition of an <em>Exercise</em> in the context of a learning environment, or</li>
 <li>a pre-configured research software (stored in a docker image), used to show reproducability of a research work or to reduce complex software environments to specific functionality</li>
 </ul>
-<h2 id="example-informal">Example (informal)</h2>
+<h2 id="examples-informal">Examples (informal)</h2>
 <p>Note: <code>//</code> with text following until EOL is a comment,</p>
 <ul>
 <li>which is not covered by the JSON spec, and</li>
 <li>should not be contained in message sends in real;</li>
 <li>but nevertheless it would help, if JSON parsers could just ignore them.</li>
 </ul>
-<pre><code>{ &quot;identifier&quot;  : &quot;11483f23-95bf-424a-98a5-ee5868c85c3e&quot;, // uuid, created by a frontend launcher
-  &quot;version&quot; : &quot;3.0.0&quot; // version of this JSON-spec definition
+<h3 id="c-student-example">C Student Example</h3>
+<pre><code>{ 
+  &quot;identifier&quot;  : &quot;11483f23-95bf-424a-98a5-ee5868c85c3e&quot;, // uuid, created by a frontend launcher
+  &quot;version&quot; : &quot;3.0.0&quot;, // version of this JSON-spec definition
   &quot;metadata&quot;: // information for frontend
-    { &quot;displayName&quot; : &quot;Aufgabe 1&quot;,  // name of computation template shown in frontend
-      &quot;description&quot; : &quot;Schreiben Sie eine C-Funktion...&quot;, // short description (could be used  
+    { 
+      &quot;displayName&quot; : &quot;Aufgabe 1&quot;,  // name of computation template shown in frontend
+      &quot;description&quot; : &quot;Schreiben Sie eine C-Funktion...&quot; // short description (could be used  
                                                      // as subtitle, further descriptions in &quot;parts&quot;).
     },
   &quot;environment&quot; : &quot;C&quot;, // important for interpreting configuration 
   &quot;files&quot; : // must: at least one array element
   [
-    { &quot;identifier&quot;: &quot;22483f42-95bf-984a-98a5-ee9485c85c3e&quot;, // uuid, for referencing
-      &quot;path&quot;      : &quot;code.c&quot;                                // filename on backend 
+    { 
+      &quot;identifier&quot;: &quot;22483f42-95bf-984a-98a5-ee9485c85c3e&quot;, // uuid, for referencing
+      &quot;path&quot;      : &quot;code.c&quot;,                                // filename on backend 
       &quot;metadata&quot;  : // information for frontend
-        {  &quot;syntaxHighlighting&quot;: &quot;C&quot;,                    // optional (default: &quot;none&quot;)
+        { 
+          &quot;decription&quot; : &quot;Programming exercise to test your knowledge of C&quot;,
+          &quot;syntaxHighlighting&quot;: &quot;C&quot;,                    // optional (default: &quot;none&quot;)
         },
       &quot;parts&quot; : // must: at least one array element
       [ 
-        { &quot;identifier&quot;: &quot;preamble&quot;,
+        { 
+          &quot;identifier&quot;: &quot;preamble&quot;,
           &quot;access&quot;    : &quot;visible&quot;,   // it is rendered, but can not be changed
           &quot;metadata&quot;  : // what has to be moved to files ?
-          { &quot;name&quot;    : &quot;Info: source before your code.&quot;, // name of element in frontend
+          { 
+            &quot;name&quot;    : &quot;Info: source before your code.&quot;, // name of element in frontend
             &quot;emphasis&quot;  : &quot;low&quot;                           // optional (for rendering)          
           },
           &quot;content&quot;   : &quot;I2luY2x1ZGUgPHN0ZGlvLmg-Cg&quot;      // source (base64url encoded) 
                                                           // decoded: #include &lt;stdio.h&gt;\n
         },
-        { &quot;identifier&quot;: &quot;codeFromStudent&quot;,
+        { 
+          &quot;identifier&quot;: &quot;codeFromStudent&quot;,
           &quot;access&quot;    : &quot;modifiable&quot;,             // it can be edited in the frontend
           &quot;metadata&quot;  :
-          { &quot;name&quot;    : &quot;Fill in your code!&quot;,
+          { 
+            &quot;name&quot;    : &quot;Fill in your code!&quot;,
             &quot;emphasis&quot;  : &quot;medium&quot;
           },
-          &quot;content&quot; : &quot;dm9pZCBiYXIoKSB7IC8qIFNjaHJlaWJlbiBTaWUgaGllciBDb2RlLCBkZXIgImJhciIgYXVzZ2lidC4gKi8KCn0K&quot;
+          &quot;content&quot; : &quot;dm9pZCBiYXIoaW50IHdpZHRoKSB7IC8qIFNjaHJlaWJlbiBTaWUgaGllciBDb2RlLCBkZXIgImJhciIgYXVzZ2lidCB1bmQgZGllIE32Z2xpY2hrZWl0IGdpYnQgZWluZSBGZWxkYnJlaXRlIGZlc3R6dWxlZ2VuKi8KCn0K&quot;
             // source (template)
-            // decoded: void bar() { /* Schreiben Sie hier Code, der &quot;bar&quot; ausgibt. */\n\n}\n 
+            // decoded: void bar(int width) { /* Schreiben Sie hier Code, der &quot;bar&quot; ausgibt und die Möglichkeit gibt eine Feldbreite festzulegen*/\n\n}\n 
         },
-        { &quot;identifier&quot;: &quot;postscript&quot;,
+        { 
+          &quot;identifier&quot;: &quot;postscript&quot;,
           &quot;access&quot;    : &quot;visible&quot;,
           &quot;metadata&quot;  :
-          { &quot;name&quot;      : &quot;Info: source after your code calling bar() in it.&quot;,
+          { 
+            &quot;name&quot;      : &quot;Info: source after your code calling bar(width) in it.&quot;,
             &quot;emphasis&quot;  : &quot;low&quot;,
           },
-          &quot;content&quot; : &quot;aW50IG1haW4oKSB7IGJhcigpOyByZXR1cm4gMDsgfQ&quot; // source
-                                                // decoded: int main() { bar(); return 0; }
+          &quot;content&quot; : &quot;aW50IG1haW4oaW50IGFyZ2MsIGNoYXIgKiphcmd2KSB7IGJhcihhcmd2WzFdKTsgcmV0dXJuIDA7IH0=&quot; // source
+                                                // decoded: int main(int argc, char **argv) { bar(argv[1]); return 0; }
         }
       ] // parts[]
     }
   ], // files[]
   &quot;parameters&quot; : // parameters can be used to supply values at runtime to the configuration
-  { &quot;__STEPWIDTH__&quot; :
-    { &quot;guiType&quot; : &quot;input_field&quot;,
-      &quot;name&quot;     : &quot;stepwidth&quot;,
-      &quot;type&quot;     : &quot;number&quot;,
-      &quot;value&quot;    : 0.001, //default
-      &quot;min&quot;      : 0,
-      &quot;max&quot;      : 1,
-      &quot;step&quot;     : 0.001,
-      &quot;validation&quot; : &quot;range&quot; // one of [range, pattern (regex), anyof/oneof]
+  [
+    {
+      &quot;mode&quot;: &quot;fixed&quot;, // in this section, the parameters can only be of mode fixed
+      &quot;identifier&quot;: &quot;__FIELDWIDTH__&quot;,
+      &quot;metadata&quot;: {
+        &quot;guiType&quot;: &quot;dropdown&quot;,
+        &quot;name&quot;: &quot;fieldwidth&quot;,
+        &quot;decription&quot; : &quot;Fieldwidth that is used to specify the width of the field of the output. To give an example, if the fieldwidth is 6, the output of bar(6) is padded like this: &quot;   bar&quot;,
+      },
+      &quot;options&quot;: [
+        {
+          &quot;value&quot;: &quot;3&quot;,
+          &quot;selected&quot;: true
+        },
+        {
+          &quot;value&quot;: &quot;6&quot;
+        },
+        {
+          &quot;value&quot;: &quot;8&quot;
+        }
+      ],
+      &quot;validation&quot;: &quot;onlyone&quot;
     }
-  },
+  ],
   &quot;configuration&quot; :
-  { &quot;compiling.compiler&quot; : &quot;gcc&quot;,                  // string
+  { 
+    &quot;compiling.compiler&quot; : &quot;gcc&quot;,                  // string
     &quot;compiling.flags&quot;    : &quot;-O2 -Wall&quot;             // string
     &quot;checking.sources&quot;   : [&quot;codeFromStudent&quot;],    // identifier to parts
     &quot;checking.forbiddenCalls&quot;: &quot;system execve&quot;,    // forbidden call names separated by WS
     &quot;linking.flags&quot;      : &quot;-lm&quot;,                  // string
-    &quot;running.commandLineArguments&quot; : &quot;--stepwidth {{ __STEPWIDTH__ }}&quot;
+    &quot;running.commandLineArguments&quot; : &quot;{{ __FIELDWIDTH__ }}&quot;
                                                // mustache template if parameters are used
   }
+}
+</code></pre>
+<h3 id="parameters-example">Parameters Example</h3>
+<pre><code>{ 
+  &quot;identifier&quot;  : &quot;11483f23-95bf-424a-98a5-ee5868c85c3f&quot;, 
+  &quot;version&quot; : &quot;3.0.0&quot;,
+  &quot;metadata&quot;: 
+    { 
+      &quot;displayName&quot; : &quot;Parameters Example&quot;,  
+      &quot;description&quot; : &quot;This is a 'Hello World' example showing the usage of parameters. Please introduce yourself so that the Hello World-Container can print your information...&quot;                                    
+    },
+  &quot;environment&quot; : &quot;Container&quot;, 
+  &quot;files&quot; : 
+  [
+    { 
+      &quot;identifier&quot;: &quot;22483f42-95bf-984a-98a5-ee9485c85c3f&quot;, 
+      &quot;path&quot;      : &quot;params.input&quot;,                              
+      &quot;metadata&quot;  : 
+        {  
+          &quot;syntaxHighlighting&quot;: &quot;ini&quot;                   
+        },
+      &quot;parts&quot; : 
+      [ 
+
+        {
+          &quot;identifier&quot;: &quot;part-contains-slider&quot;,
+          &quot;access&quot;: &quot;template&quot;,
+          &quot;metadata&quot;: {
+            &quot;name&quot;: &quot;Parameter in part&quot;,
+            &quot;emphasis&quot;: &quot;low&quot;
+          },
+          &quot;parameters&quot; : 
+          [
+            {
+              &quot;mode&quot; : &quot;any&quot;,
+              &quot;identifier&quot; : &quot;__sliderSingle__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot; : &quot;slider&quot;,
+                &quot;name&quot;: &quot;Temperature&quot;,
+                &quot;vertical&quot;: false,
+                &quot;decription&quot; : &quot;How hot do you like your coffee? (in degrees Celsius)&quot;
+              },
+              &quot;default&quot;: [
+                75
+              ],
+              &quot;min&quot;: 0,
+              &quot;max&quot;: 90,
+              &quot;step&quot;: 10,
+              &quot;validation&quot;: &quot;range&quot;
+            }
+          ],
+          &quot;content&quot;: &quot;TXkgY29mZmVlIG5lZWRzIHRvIGJlIHt7X19zbGlkZXJTaW5nbGVfX319IGRlZ3JlZXMgQ2Vsc2l1cw==&quot; // decoded: My coffee needs to be {{__sliderSingle__}} degrees Celsius
+        },
+        {
+          &quot;identifier&quot;: &quot;ceb051d8-b50c-4814-983a-b9d703cae0c6&quot;,
+          &quot;access&quot;    : &quot;template&quot;,
+          &quot;metadata&quot;  :
+              { 
+                &quot;name&quot;      : &quot;params.input file&quot;
+              },
+          &quot;parameters&quot;:
+          [
+            {
+              &quot;mode&quot; : &quot;fixed&quot;,
+              &quot;identifier&quot; : &quot;__checkbox__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot;: &quot;checkbox&quot;,
+                &quot;name&quot;: &quot;Things I like&quot;,
+                &quot;decription&quot; : &quot;Select things you like&quot;
+              },
+              &quot;options&quot;: [
+                {
+                  &quot;value&quot; : &quot;programming&quot;,
+                  &quot;selected&quot; : true
+                },
+                {
+                  &quot;value&quot; : &quot;music&quot;
+                },
+                {
+                  &quot;value&quot; : &quot;books&quot;
+                }
+              ],
+              &quot;validation&quot;: &quot;anyof&quot;
+            }, 
+            {
+              &quot;mode&quot; : &quot;fixed&quot;,
+              &quot;identifier&quot; : &quot;__radioButton__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot;: &quot;radio&quot;,
+                &quot;name&quot;: &quot;Favorite PL&quot;,
+                &quot;decription&quot; : &quot;Select your favorite programming language&quot;,
+              },
+              &quot;options&quot;: [
+                {
+                  &quot;value&quot; : &quot;C&quot;
+                },
+                {
+                  &quot;value&quot; : &quot;Java&quot;,
+                  &quot;selected&quot; : true
+                },
+                {
+                  &quot;value&quot; : &quot;Haskell&quot;,
+                  &quot;disabled&quot; : true
+                },
+                {
+                  &quot;value&quot; : &quot;Python&quot;
+                }
+              ],
+              &quot;validation&quot;: &quot;oneof&quot;
+            },
+            {
+              &quot;mode&quot; : &quot;fixed&quot;,
+              &quot;identifier&quot; : &quot;__dropdownSingle__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot;: &quot;dropdown&quot;,
+                &quot;name&quot;: &quot;Fridge&quot;,
+                &quot;decription&quot; : &quot;How often do look into the fridge a day?&quot;
+              },
+              &quot;options&quot;: [
+                {
+                  &quot;value&quot; : &quot;Please choose one&quot;,
+                  &quot;disabled&quot; : true
+                },
+                {
+                  &quot;value&quot; : &quot;never&quot;,
+                  &quot;selected&quot; : true
+                },
+                {
+                  &quot;value&quot; : &quot;Once a day&quot;
+                },
+                {
+                  &quot;value&quot; : &quot;Twice a day&quot;
+                },
+                {
+                  &quot;value&quot; : &quot;Three times a day&quot;
+                },
+                {
+                  &quot;value&quot; : &quot;More than three times a day&quot;
+                }
+              ],
+              &quot;validation&quot;: &quot;oneof&quot;
+            }, 
+            {
+              &quot;mode&quot; : &quot;fixed&quot;,
+              &quot;identifier&quot; : &quot;__dropdownMultiple__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot;: &quot;dropdown&quot;,
+                &quot;name&quot;: &quot;Dance Time&quot;,
+                &quot;decription&quot; : &quot;To which songs would you dance in the kitchen?&quot;
+              },
+              &quot;options&quot;: [
+                {
+                  &quot;value&quot; : &quot;Please choose multiple&quot;,
+                  &quot;disabled&quot; : true
+                },
+                {
+                  &quot;value&quot; : &quot;Last Christmas&quot;,
+                  &quot;selected&quot; : true
+                },
+                {
+                  &quot;value&quot; : &quot;White Christmas&quot;
+                },
+                {
+                  &quot;value&quot; : &quot;Winter Woderland&quot;
+                },
+                {
+                  &quot;value&quot; : &quot;Thats Christmas To Me&quot;, 
+                  &quot;selected&quot; : true
+                },
+                {
+                  &quot;value&quot; : &quot;O Come All Ye Faithful&quot;, 
+                  &quot;disabled&quot; : true
+                }
+              ], 
+              &quot;validation&quot;: &quot;anyof&quot;
+            }, 
+            {
+              &quot;mode&quot; : &quot;fixed&quot;,
+              &quot;identifier&quot; : &quot;__toggle__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot;: &quot;toggle&quot;,
+                &quot;name&quot;: &quot;NO!&quot;,
+                &quot;decription&quot; : &quot;What do you dislike?&quot;
+              },
+              &quot;options&quot;: [
+                {
+                  &quot;value&quot; : &quot;Spiders&quot;,
+                  &quot;selected&quot; : true
+                },
+                {
+                  &quot;value&quot; : &quot;All kinds of Bugs (also the ones living in your Computer)&quot;
+                },
+                {
+                  &quot;value&quot; : &quot;I never dislike anything!&quot;
+                }
+              ], 
+              &quot;validation&quot;: &quot;anyof&quot;
+            }, 
+            {
+              &quot;mode&quot; : &quot;any&quot;,
+              &quot;identifier&quot; : &quot;__sliderMultiple__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot; : &quot;slider&quot;,
+                &quot;name&quot;: &quot;random numbers&quot;,
+                &quot;vertical&quot;: true,
+                &quot;decription&quot; : &quot;Choose three random numbers to be output by the container&quot;
+              },
+              &quot;default&quot;: [
+                25,
+                50,
+                75
+              ],
+              &quot;min&quot;: 0,
+              &quot;max&quot;: 100,
+              &quot;step&quot;: 5,
+              &quot;validation&quot;: &quot;range&quot;
+            },
+            {
+              &quot;mode&quot; : &quot;any&quot;,
+              &quot;identifier&quot; : &quot;__inputTextWOMaxlangth__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot; : &quot;input_field&quot;,
+                &quot;type&quot;: &quot;text&quot;,
+                &quot;name&quot;: &quot;name&quot;,
+                &quot;decription&quot; : &quot;Enter your name&quot;
+              },
+              &quot;default&quot; : [&quot;&quot;],
+              &quot;validation&quot;: &quot;none&quot;
+            },
+            {
+              &quot;mode&quot; : &quot;any&quot;,
+              &quot;identifier&quot; : &quot;__inputTextWMaxlength__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot; : &quot;input_field&quot;,
+                &quot;type&quot;: &quot;text&quot;,
+                &quot;name&quot;: &quot;Christmas Wish&quot;,
+                &quot;decription&quot; : &quot;Enter what you wish for at christmas&quot;
+              },
+              &quot;maxlength&quot;: 200,
+              &quot;default&quot; : [&quot;&quot;],
+              &quot;validation&quot;: &quot;pattern&quot;
+            },
+            {
+              &quot;mode&quot; : &quot;any&quot;,
+              &quot;identifier&quot; : &quot;__inputNumber__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot; : &quot;input_field&quot;,
+                &quot;type&quot;: &quot;number&quot;,
+                &quot;name&quot;: &quot;Age&quot;,
+                &quot;decription&quot; : &quot;Enter your current age&quot;
+              },
+              &quot;default&quot;: [25],
+              &quot;min&quot;: 0,
+              &quot;max&quot;: 100,
+              &quot;step&quot;: 1,
+              &quot;validation&quot;: &quot;range&quot;
+            },
+            {
+              &quot;mode&quot; : &quot;any&quot;,
+              &quot;identifier&quot; : &quot;__default__&quot;, 
+              &quot;metadata&quot; : {
+                &quot;guiType&quot; : &quot;editor&quot;, 
+                &quot;name&quot;: &quot;code&quot;,
+                &quot;decription&quot; : &quot;Enter some code&quot;
+              },
+              &quot;default&quot;: [&quot;aW50IG1haW4oaW50IGFyZ2MsIGNoYXIgKiphcmd2KSB7IC8vIFByaW50ICdIZWxsbyBXb3JsZCcgfQ==&quot;], // decoded: int main(int argc, char **argv) { // Print 'Hello World' }
+              &quot;validation&quot;: &quot;pattern&quot;
+            }
+          ],
+            &quot;content&quot;   : &quot;&quot;
+        }
+      ] 
+    }
+  ], 
+  &quot;configuration&quot; :
+    { &quot;resources.image&quot;  : &quot;name&quot;,
+      &quot;resources.volume&quot; : &quot;/data/shared&quot;,
+      &quot;resources.memory&quot; : &quot;1g&quot;,
+      &quot;resources.numCPUs&quot; : 1,
+      &quot;running.entrypoint&quot; : &quot;/data/bin/run.sh&quot;,
+      &quot;running.commandLineArguments&quot; : &quot;params.input&quot;
+    }
 }
 </code></pre>
 <h2 id="explaining-the-json-format">Explaining the JSON Format</h2>
@@ -349,10 +657,10 @@
 </tr>
 <tr>
 <td>parameters</td>
-<td>{PARAM_ID, PARAM_ID, ...}</td>
+<td>[{...}, {...}, ...]</td>
 <td>opt</td>
-<td>Parameters can be used to supply values at runtime to the configuration. Each parameter has a unique PARAM_ID (string) and is a <a href="#json-object-parameter">JSON object</a>.</td>
-<td>For security reasons free text <em>gui_type</em>, i.e., text input field or editor, are not allowed here.</td>
+<td>Parameters can be used to supply values at runtime to the configuration. Each parameter has a unique identifier (as string) and is a <a href="#json-object-parameter">Parameter object</a>.</td>
+<td>For security reasons free text <em>guiType</em>, i.e., text input field or editor, are not allowed here. The only allowed parameters are those, that have mode set to fixed</td>
 <td></td>
 </tr>
 <tr>
@@ -482,6 +790,14 @@
 <td>regex-expression in stdout which file is ready to be transferred</td>
 <td>for <strong>Container</strong></td>
 <td>Is this implemented?</td>
+</tr>
+<tr>
+<td>configuration --running.userId</td>
+<td>int</td>
+<td>opt</td>
+<td>user id of the user that writes files inside the container</td>
+<td>for <strong>Container</strong>; needed to set correct permissions</td>
+<td></td>
 </tr>
 <tr>
 <td>configuration --resources.image</td>
@@ -621,20 +937,41 @@ With this logic it is possible to define
 <td>struct</td>
 <td>opt</td>
 <td>contains information for frontend</td>
-<td></td>
-</tr>
-<tr>
-<td>metadata --syntaxHighlighting</td>
-<td>string (<em>text</em>)</td>
-<td>opt</td>
-<td>Mode of the ace editor. List can be found in on <a href="https://github.com/ajaxorg/ace/tree/master/lib/ace/mode">github</a></td>
-<td>Examples: "ini", "c_cpp", "matlab", "java". See also <a href="http://ajaxorg.github.io/ace-builds/kitchen-sink.html">Ace demo</a></td>
+<td>See definition of <a href="#file-metadata-json-object">file metadata</a></td>
 </tr>
 <tr>
 <td>parts</td>
 <td>[{...}, {...}, ...]</td>
 <td>must</td>
 <td>array containing <a href="#json-objects-in-parts">part objects</a>. There has to be at least one.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="file-metadata-json-object">file metadata JSON object</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type (an enum default is marked by <em>italics</em>)</th>
+<th>Opt / Must</th>
+<th>Description</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>syntaxHighlighting</td>
+<td>string (<em>text</em>)</td>
+<td>opt</td>
+<td>Mode of the ace editor. List can be found in on <a href="https://github.com/ajaxorg/ace/tree/master/lib/ace/mode">github</a></td>
+<td>Examples: "ini", "c_cpp", "matlab", "java". See also <a href="http://ajaxorg.github.io/ace-builds/kitchen-sink.html">Ace demo</a></td>
+</tr>
+<tr>
+<td>decription</td>
+<td>string (<em>text</em>)</td>
+<td>opt</td>
+<td>description of the file</td>
 <td></td>
 </tr>
 </tbody>
@@ -694,11 +1031,11 @@ With this logic it is possible to define
 <td>Still needed?</td>
 </tr>
 <tr>
-<td>metadata --PARAM_ID</td>
-<td>struct</td>
+<td>parameters</td>
+<td>array of parameter-objects</td>
 <td>opt</td>
 <td>definition of <a href="#json-object-parameter">parameters</a> that are injected to <em>content</em> at runtime</td>
-<td>Any number of parameters can be specified, but the PARAM_ID has to be unique.</td>
+<td>Any number of parameters can be specified, but the PARAM_ID (identifier) has to be unique.</td>
 <td></td>
 </tr>
 <tr>
@@ -706,7 +1043,7 @@ With this logic it is possible to define
 <td>string</td>
 <td>must</td>
 <td>base64url-encoded source code</td>
-<td>Can contain mustache expressions with PARAM_IDs if the access type of this part is "template".</td>
+<td>Can contain mustache expressions with PARAM_IDs (identifiers) if the access type of this part is "template".</td>
 <td></td>
 </tr>
 </tbody>
@@ -720,7 +1057,72 @@ With this logic it is possible to define
 <li><strong>template</strong>: The <em>content</em> is shown to a user, but can not be changed. Additionally, GUI elements like input fields, sliders, buttons, etc. that are specified within the <em>metadata</em> can be set by the user and the template is then filled with these parameter values. This access-level can be used to simplify complex research software configurations for the re-user. </li>
 </ul>
 <h3 id="json-object-parameter">JSON object Parameter</h3>
-<p>An PARAM_ID-object, like <em>__BINARY__</em>, has the following members:</p>
+<p>A parameter-object, has the following members:</p>
+<table>
+<thead>
+<tr>
+<th>Key [--Subkey]</th>
+<th>Type (a default is marked by <em>italics</em>)</th>
+<th>Opt / Must</th>
+<th>Description</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>one of {"any", "fixed"}</td>
+<td>must</td>
+<td>specifies type of the parameter</td>
+<td>used to define the type of validation that is performed</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td>string</td>
+<td>must</td>
+<td>unique id for this parameter</td>
+<td>This id must be valid mustach template variable. Example: "<em>__BINARY__</em>"</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fixed-type-parameter-json-object">fixed-type parameter JSON object</h4>
+<p>A fixed-type PARAM-object, like <em>__checkbox__</em>, has the following members:</p>
+<table>
+<thead>
+<tr>
+<th>Key [--Subkey]</th>
+<th>Type (a default is marked by <em>italics</em>)</th>
+<th>Opt / Must</th>
+<th>Description</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metadata</td>
+<td>Object</td>
+<td>must</td>
+<td>JSON object containing information how to render this parameter</td>
+<td>See definition of <a href="#fixed-type-json-object-parameter-metadata">fixed-type JSON object Parameter-Metadata</a></td>
+</tr>
+<tr>
+<td>options</td>
+<td>array of objects</td>
+<td>must for <em>gui_type</em> "checkbox", "radio", "dropdown", "toggle"</td>
+<td>specifies the allowed values</td>
+<td>See <a href="#fixed-type-options-json-object">fixed-type options JSON object</a> for details on contained objects</td>
+</tr>
+<tr>
+<td>validation</td>
+<td>one of {"onlyone", "minone", "any"}</td>
+<td>must</td>
+<td>See <a href="#parameter-validation-semantics">Parameter validation semantics</a> for details</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="fixed-type-json-object-parameter-metadata">fixed-type JSON object Parameter-Metadata</h4>
+<p>A metadata-object, has the following members:</p>
 <table>
 <thead>
 <tr>
@@ -734,7 +1136,7 @@ With this logic it is possible to define
 <tbody>
 <tr>
 <td>guiType</td>
-<td>one of {<em>"editor"</em>, "input_field", "checkbox", "radio", "dropdown", "toggle", "slider"}</td>
+<td>one of {"checkbox", "radio", "dropdown", "toggle"}</td>
 <td>must</td>
 <td>specifies how the frontend renders the parameter</td>
 <td></td>
@@ -747,24 +1149,95 @@ With this logic it is possible to define
 <td>frontend feature</td>
 </tr>
 <tr>
-<td>type</td>
-<td>one of {"number", "text"}</td>
-<td>opt</td>
-<td>Type of the input field</td>
-<td></td>
+<td>description</td>
+<td>string</td>
+<td>must</td>
+<td>description of the parameter</td>
+<td>frontend feature</td>
 </tr>
+</tbody>
+</table>
+<h4 id="fixed-type-options-json-object">fixed-type options JSON object</h4>
+<table>
+<thead>
+<tr>
+<th>Key [--Subkey]</th>
+<th>Type (a default is marked by <em>italics</em>)</th>
+<th>Opt / Must</th>
+<th>Description</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>value</td>
-<td>number for numerical "input_field"; array of numbers for a range slider</td>
+<td>string</td>
+<td>must</td>
+<td>specifies one avaliable value</td>
+<td>Example: { "value" : "verbose" }</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
 <td>opt</td>
-<td>the default value(s) shown in frontend</td>
+<td>Text shown besides or as dropdown of the value</td>
 <td></td>
 </tr>
 <tr>
-<td>values</td>
-<td>array of strings</td>
-<td>must for <em>gui_type</em> "checkbox", "radio", "dropdown", "toggle"</td>
-<td>specifies the allowed values</td>
+<td>disabled</td>
+<td>boolean</td>
+<td>opt</td>
+<td>Shows disabled options in frontend</td>
+<td>Example: { "value" : "Please choose multiple", "disabled" : true }</td>
+</tr>
+<tr>
+<td>selected</td>
+<td>Boolean</td>
+<td>opt</td>
+<td>specifies defaults value/values for frontend</td>
+<td>the strings have to be part of <em>values</em>; for "toogle" given values mean <em>true</em></td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>opt</td>
+<td>Text shown besides or as dropdown of the value</td>
+<td></td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>must</td>
+<td>description of the parameter</td>
+<td>frontend feature</td>
+</tr>
+</tbody>
+</table>
+<h4 id="any-type-parameter-json-object">any-type parameter JSON object</h4>
+<p>A any-type PARAM-object, like <em>__sliderMultiple__</em>, has the following members:</p>
+<table>
+<thead>
+<tr>
+<th>Key [--Subkey]</th>
+<th>Type (a default is marked by <em>italics</em>)</th>
+<th>Opt / Must</th>
+<th>Description</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metadata</td>
+<td>Object</td>
+<td>must</td>
+<td>JSON object containing information how to render this parameter</td>
+<td>See definition of <a href="#any-type-json-object-parameter-metadata">any-type JSON object Parameter-Metadata</a></td>
+</tr>
+<tr>
+<td>default</td>
+<td>array of number(s) or string(s)</td>
+<td>opt</td>
+<td>the default value(s) shown in frontend</td>
 <td></td>
 </tr>
 <tr>
@@ -772,55 +1245,34 @@ With this logic it is possible to define
 <td>number</td>
 <td>opt</td>
 <td>minimal allowed value</td>
-<td></td>
+<td>for slider, or input_field with type number</td>
 </tr>
 <tr>
 <td>max</td>
 <td>number</td>
 <td>opt</td>
 <td>maximal allowed value</td>
-<td></td>
+<td>for slider, or input_field with type number</td>
 </tr>
 <tr>
 <td>step</td>
 <td>number</td>
 <td>opt</td>
 <td>defines together with <em>min</em> and <em>max</em> attributes a finite set of allowed values</td>
+<td>for slider, or input_field with type number</td>
+</tr>
+<tr>
+<td>maxlength</td>
+<td>number</td>
+<td>opt</td>
+<td>Specifies for <em>gui_type</em> "input_field" the length of the input</td>
 <td></td>
 </tr>
 <tr>
 <td>validation</td>
-<td>one of {"range", "pattern", "anyof", "oneof"}</td>
+<td>one of {"range", "pattern", "none"}</td>
 <td>must</td>
-<td>See <a href="#parameter-checking-semantics">Parameter validation semantics</a> for details</td>
-<td></td>
-</tr>
-<tr>
-<td>selected</td>
-<td>array of strings for <em>gui_type</em> "checkbox"/"toggle"; string for <em>gui_type</em> "radio"</td>
-<td>opt</td>
-<td>specifies defaults value/values for frontend</td>
-<td>the strings have to be part of <em>values</em>; for "toogle" given values mean <em>true</em></td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>array of strings</td>
-<td>opt</td>
-<td>Shows disabled options in frontend</td>
-<td>sting has to be part of <em>values</em>; suited, e.g., to show possibilities that are part of a software, but deactivated</td>
-</tr>
-<tr>
-<td>multiple</td>
-<td>bool</td>
-<td>opt (<em>false</em>)</td>
-<td>Specifies for <em>gui_type</em> "dropdown"/"slider" if multiple values can be selected</td>
-<td>If true, <em>selected</em>/<em>value</em> has to be an array; a dropdown list is then rendered as listbox</td>
-</tr>
-<tr>
-<td>vertical</td>
-<td>bool</td>
-<td>opt (<em>false</em>)</td>
-<td>Specifies for <em>gui_type</em> "slider" whether it is rendered horizontal or vertical</td>
+<td>See <a href="#parameter-validation-semantics">Parameter validation semantics</a> for details</td>
 <td></td>
 </tr>
 <tr>
@@ -832,13 +1284,58 @@ With this logic it is possible to define
 </tr>
 </tbody>
 </table>
+<h4 id="any-type-json-object-parameter-metadata">any-type JSON object Parameter-Metadata</h4>
+<p>A metadata-object, has the following members:</p>
+<table>
+<thead>
+<tr>
+<th>Key [--Subkey]</th>
+<th>Type (a default is marked by <em>italics</em>)</th>
+<th>Opt / Must</th>
+<th>Description</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>guiType</td>
+<td>one of {<em>"editor"</em>, "input_field", "slider"}</td>
+<td>must</td>
+<td>specifies how the frontend renders the parameter</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>one of {"number", "text"}</td>
+<td>opt</td>
+<td>Type of the input field</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>must</td>
+<td>Label for the parameter</td>
+<td>frontend feature</td>
+</tr>
+<tr>
+<td>vertical</td>
+<td>bool</td>
+<td>opt (<em>false</em>)</td>
+<td>Specifies for <em>gui_type</em> "slider" whether it is rendered horizontal or vertical</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h4 id="parameter-validation-semantics">Parameter Validation Semantics</h4>
 <p>Four types of validation are implemented at the moment:</p>
 <ul>
+<li><strong>onlyone</strong>: Only one value can be chosen. The value has to be included in <em>options</em> and <em>disabled</em> for the <em>value</em> has to be set to false (is false by default, so <em>disabled</em> can also be missing).</li>
+<li><strong>minone</strong>: One or more values can be chosen. The values have to be included in <em>options</em> and <em>disabled</em> for the <em>value</em>s has to be set to false (is false by default, so <em>disabled</em> can also be missing).</li>
+<li><strong>any</strong>: All of the chosen values have to be included in <em>options</em> and <em>disabled</em> for the <em>value</em>s has to be set to false (is false by default, so <em>disabled</em> can also be missing).</li>
 <li><strong>range</strong>: A numerical value is checked whether is is between <em>min</em> and <em>max</em>. If <em>step</em> is given a finite number of possible values is computed and the value has to be within this set.</li>
 <li><strong>pattern</strong>: A regex pattern that the text value has to fulfill.</li>
-<li><strong>oneof</strong>: The value has to be included in <em>values</em> and, if given, not in <em>disabled</em>.</li>
-<li><strong>anyof</strong>: All values have to be included in <em>values</em> and, if given, not in <em>disabled</em>.</li>
+<li><strong>none</strong>: If no validation is necessary, because there are no restraints on the value.</li>
 </ul></div>
             </div>
         </div>
@@ -862,16 +1359,13 @@ With this logic it is possible to define
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
