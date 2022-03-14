@@ -636,7 +636,7 @@
 <td>[{...}, {...}, ...]</td>
 <td>opt</td>
 <td>Parameters can be used to supply values at runtime to the configuration. Each parameter has a unique identifier (as string) and is a <a href="#json-object-parameter">Parameter object</a>.</td>
-<td>For security reasons free text <em>guiType</em>, i.e., text input field or editor, are not allowed here. The only allowed parameters are those, that have mode set to fixed</td>
+<td>For security reasons free text <em>guiType</em>, i.e., text input field or editor, are not allowed here. <strong>The only allowed parameters are those, that have mode set to fixed</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -917,7 +917,7 @@
 <td></td>
 </tr>
 <tr>
-<td>labels</td>
+<td>xlabel</td>
 <td>struct</td>
 <td>opt</td>
 <td>Define labels for csv-files</td>
@@ -925,7 +925,7 @@
 <td></td>
 </tr>
 <tr>
-<td>labels --key</td>
+<td>xlabel --key</td>
 <td>string</td>
 <td>opt</td>
 <td>key for x-axis given in csv header</td>
@@ -933,7 +933,7 @@
 <td></td>
 </tr>
 <tr>
-<td>labels --label</td>
+<td>xlabel --label</td>
 <td>string</td>
 <td>opt</td>
 <td>x-axis label for diagram</td>
@@ -941,28 +941,20 @@
 <td></td>
 </tr>
 <tr>
-<td>labels --factor</td>
+<td>xlabel --factor</td>
 <td>string</td>
 <td>opt</td>
-<td>description</td>
+<td>Multiply x-values with this factor</td>
 <td></td>
-<td>Needed?</td>
+<td></td>
 </tr>
 <tr>
-<td>labels --offset</td>
+<td>xlabel --format</td>
 <td>string</td>
 <td>opt</td>
-<td>description</td>
+<td>Format the x-axis values according to format string</td>
+<td>For information on the avaliable formating take a look at the info given by <a href="https://github.com/d3/d3-format/blob/main/README.md#locale_format">Plotly</a>; Example: To format a number to have two decimals, use "0.2f"</td>
 <td></td>
-<td>Needed?</td>
-</tr>
-<tr>
-<td>labels --format</td>
-<td>string</td>
-<td>opt</td>
-<td>description</td>
-<td></td>
-<td>Needed?</td>
 </tr>
 <tr>
 <td>plots</td>
@@ -986,6 +978,22 @@
 <td>opt</td>
 <td>y-axis label for diagram</td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>xlabel --factor</td>
+<td>string</td>
+<td>opt</td>
+<td>Multiply y-values with this factor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>plots --format</td>
+<td>string</td>
+<td>opt</td>
+<td>Format the y-axis values according to format string</td>
+<td>For information on the avaliable formating take a look at the info given by <a href="https://github.com/d3/d3-format/blob/main/README.md#locale_format">Plotly</a>; Example: To format a number to have two decimals, use "0.2f"</td>
 <td></td>
 </tr>
 </tbody>
