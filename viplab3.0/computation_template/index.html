@@ -266,7 +266,7 @@
       &quot;metadata&quot;: {
         &quot;guiType&quot;: &quot;dropdown&quot;,
         &quot;name&quot;: &quot;fieldwidth&quot;,
-        &quot;decription&quot; : &quot;Fieldwidth that is used to specify the width of the field of the output. To give an example, if the fieldwidth is 6, the output of bar(6) is padded like this: &quot;   bar&quot;,
+        &quot;decription&quot; : &quot;Fieldwidth that is used to specify the width of the field of the output. To give an example, if the fieldwidth is 6, the output of bar(6) is padded like this: '   bar'&quot;,
       },
       &quot;options&quot;: [
         {
@@ -299,26 +299,25 @@
 <pre><code>{ 
   &quot;identifier&quot;  : &quot;11483f23-95bf-424a-98a5-ee5868c85c3f&quot;, 
   &quot;version&quot; : &quot;3.0.0&quot;,
-  &quot;metadata&quot;: 
-    { 
-      &quot;displayName&quot; : &quot;Parameters Example&quot;,  
-      &quot;description&quot; : &quot;This is a 'Hello World' example showing the usage of parameters. Please introduce yourself so that the Hello World-Container can print your information...&quot;                                    
-    },
+  &quot;metadata&quot;: { 
+    &quot;displayName&quot; : &quot;Parameters Example&quot;,  
+    &quot;description&quot; : &quot;This is a 'Hello World' example showing the usage of parameters. Please introduce yourself so that the Hello World-Container can print your information...&quot;,
+    &quot;viewer&quot; : [&quot;CSV&quot;, &quot;ParaView&quot;, &quot;Image&quot;]
+  },
   &quot;environment&quot; : &quot;Container&quot;, 
   &quot;files&quot; : 
   [
     { 
       &quot;identifier&quot;: &quot;22483f42-95bf-984a-98a5-ee9485c85c3f&quot;, 
-      &quot;path&quot;      : &quot;params.input&quot;,                              
+      &quot;path&quot;      : &quot;params.ini&quot;,                              
       &quot;metadata&quot;  : 
         {  
           &quot;syntaxHighlighting&quot;: &quot;ini&quot;                   
         },
       &quot;parts&quot; : 
-      [ 
-
+      [
         {
-          &quot;identifier&quot;: &quot;part-contains-slider&quot;,
+          &quot;identifier&quot;: &quot;f3fc4404-3529-4962-b252-47bc4ddd02a1&quot;,
           &quot;access&quot;: &quot;template&quot;,
           &quot;metadata&quot;: {
             &quot;name&quot;: &quot;Parameter in part&quot;,
@@ -333,7 +332,7 @@
                 &quot;guiType&quot; : &quot;slider&quot;,
                 &quot;name&quot;: &quot;Temperature&quot;,
                 &quot;vertical&quot;: false,
-                &quot;decription&quot; : &quot;How hot do you like your coffee? (in degrees Celsius)&quot;
+                &quot;description&quot; : &quot;How hot do you like your coffee? (in degrees Celsius) - Tip: Typical Serving Temperature lies between 65 and 70 Degrees&quot;
               },
               &quot;default&quot;: [
                 75
@@ -344,14 +343,14 @@
               &quot;validation&quot;: &quot;range&quot;
             }
           ],
-          &quot;content&quot;: &quot;TXkgY29mZmVlIG5lZWRzIHRvIGJlIHt7X19zbGlkZXJTaW5nbGVfX319IGRlZ3JlZXMgQ2Vsc2l1cw==&quot; // decoded: My coffee needs to be {{__sliderSingle__}} degrees Celsius
+          &quot;content&quot;: &quot;W2NvZmZlZSBwcmVmZXJlbmNlXQpjb2ZmZWVUZW1wZXJhdHVyZT17e19fc2xpZGVyU2luZ2xlX199fQ&quot;
         },
         {
           &quot;identifier&quot;: &quot;ceb051d8-b50c-4814-983a-b9d703cae0c6&quot;,
           &quot;access&quot;    : &quot;template&quot;,
           &quot;metadata&quot;  :
               { 
-                &quot;name&quot;      : &quot;params.input file&quot;
+                &quot;name&quot;      : &quot;params.ini file part&quot;
               },
           &quot;parameters&quot;:
           [
@@ -361,10 +360,11 @@
               &quot;metadata&quot; : {
                 &quot;guiType&quot;: &quot;checkbox&quot;,
                 &quot;name&quot;: &quot;Things I like&quot;,
-                &quot;decription&quot; : &quot;Select things you like&quot;
+                &quot;description&quot; : &quot;Select things you like&quot;
               },
               &quot;options&quot;: [
                 {
+                  &quot;text&quot; : &quot;Programming&quot;,
                   &quot;value&quot; : &quot;programming&quot;,
                   &quot;selected&quot; : true
                 },
@@ -383,7 +383,7 @@
               &quot;metadata&quot; : {
                 &quot;guiType&quot;: &quot;radio&quot;,
                 &quot;name&quot;: &quot;Favorite PL&quot;,
-                &quot;decription&quot; : &quot;Select your favorite programming language&quot;,
+                &quot;description&quot; : &quot;Select your favorite programming language&quot;
               },
               &quot;options&quot;: [
                 {
@@ -398,6 +398,7 @@
                   &quot;disabled&quot; : true
                 },
                 {
+                  &quot;text&quot; : &quot;Sssss... Python ...ssssS&quot;,
                   &quot;value&quot; : &quot;Python&quot;
                 }
               ],
@@ -409,7 +410,7 @@
               &quot;metadata&quot; : {
                 &quot;guiType&quot;: &quot;dropdown&quot;,
                 &quot;name&quot;: &quot;Fridge&quot;,
-                &quot;decription&quot; : &quot;How often do look into the fridge a day?&quot;
+                &quot;description&quot; : &quot;How often do look into the fridge a day?&quot;
               },
               &quot;options&quot;: [
                 {
@@ -421,6 +422,7 @@
                   &quot;selected&quot; : true
                 },
                 {
+                  &quot;text&quot; : &quot;1 a day&quot;,
                   &quot;value&quot; : &quot;Once a day&quot;
                 },
                 {
@@ -441,7 +443,7 @@
               &quot;metadata&quot; : {
                 &quot;guiType&quot;: &quot;dropdown&quot;,
                 &quot;name&quot;: &quot;Dance Time&quot;,
-                &quot;decription&quot; : &quot;To which songs would you dance in the kitchen?&quot;
+                &quot;description&quot; : &quot;To which songs would you dance in the kitchen?&quot;
               },
               &quot;options&quot;: [
                 {
@@ -449,6 +451,7 @@
                   &quot;disabled&quot; : true
                 },
                 {
+                  &quot;text&quot; : &quot;Last Christmas (aka the one that drives everybody else crazy)&quot;,
                   &quot;value&quot; : &quot;Last Christmas&quot;,
                   &quot;selected&quot; : true
                 },
@@ -475,7 +478,7 @@
               &quot;metadata&quot; : {
                 &quot;guiType&quot;: &quot;toggle&quot;,
                 &quot;name&quot;: &quot;NO!&quot;,
-                &quot;decription&quot; : &quot;What do you dislike?&quot;
+                &quot;description&quot; : &quot;What do you dislike?&quot;
               },
               &quot;options&quot;: [
                 {
@@ -483,7 +486,8 @@
                   &quot;selected&quot; : true
                 },
                 {
-                  &quot;value&quot; : &quot;All kinds of Bugs (also the ones living in your Computer)&quot;
+                  &quot;text&quot; : &quot;All kinds of Bugs (also the ones living in your Computer)&quot;,
+                  &quot;value&quot; : &quot;All kinds of Bugs&quot;
                 },
                 {
                   &quot;value&quot; : &quot;I never dislike anything!&quot;
@@ -498,7 +502,7 @@
                 &quot;guiType&quot; : &quot;slider&quot;,
                 &quot;name&quot;: &quot;random numbers&quot;,
                 &quot;vertical&quot;: true,
-                &quot;decription&quot; : &quot;Choose three random numbers to be output by the container&quot;
+                &quot;description&quot; : &quot;Choose three random numbers to be output by the container&quot;
               },
               &quot;default&quot;: [
                 25,
@@ -512,12 +516,12 @@
             },
             {
               &quot;mode&quot; : &quot;any&quot;,
-              &quot;identifier&quot; : &quot;__inputTextWOMaxlangth__&quot;, 
+              &quot;identifier&quot; : &quot;__inputTextWOMaxlength__&quot;, 
               &quot;metadata&quot; : {
                 &quot;guiType&quot; : &quot;input_field&quot;,
                 &quot;type&quot;: &quot;text&quot;,
                 &quot;name&quot;: &quot;name&quot;,
-                &quot;decription&quot; : &quot;Enter your name&quot;
+                &quot;description&quot; : &quot;Enter your name&quot;
               },
               &quot;default&quot; : [&quot;&quot;],
               &quot;validation&quot;: &quot;none&quot;
@@ -529,7 +533,7 @@
                 &quot;guiType&quot; : &quot;input_field&quot;,
                 &quot;type&quot;: &quot;text&quot;,
                 &quot;name&quot;: &quot;Christmas Wish&quot;,
-                &quot;decription&quot; : &quot;Enter what you wish for at christmas&quot;
+                &quot;description&quot; : &quot;Enter what you wish for at christmas&quot;
               },
               &quot;maxlength&quot;: 200,
               &quot;default&quot; : [&quot;&quot;],
@@ -542,38 +546,58 @@
                 &quot;guiType&quot; : &quot;input_field&quot;,
                 &quot;type&quot;: &quot;number&quot;,
                 &quot;name&quot;: &quot;Age&quot;,
-                &quot;decription&quot; : &quot;Enter your current age&quot;
+                &quot;description&quot; : &quot;Enter your current age&quot;
               },
               &quot;default&quot;: [25],
               &quot;min&quot;: 0,
               &quot;max&quot;: 100,
               &quot;step&quot;: 1,
               &quot;validation&quot;: &quot;range&quot;
-            },
+            }
+          ],
+          &quot;content&quot;   : &quot;W2Fib3V0IHlvdV0NCmxpa2VkVGhpbmdzPXt7X19jaGVja2JveF9ffX0NCmZhdm9yaXRlUEw9e3tfX3JhZGlvQnV0dG9uX199fQ0KZnJpZGdlPXt7X19kcm9wZG93blNpbmdsZV9ffX0NCmRhbmNpbmc9e3tfX2Ryb3Bkb3duTXVsdGlwbGVfX319DQpkaXNsaWtlZFRoaW5ncz17e19fdG9nZ2xlX199fQ0KcmFuZG9tTnVtYmVycz17e19fc2xpZGVyTXVsdGlwbGVfX319DQpuYW1lPXt7X19pbnB1dFRleHRXT01heGxlbmd0aF9ffX0NCmNocmlzdG1hc1dpc2g9e3tfX2lucHV0VGV4dFdNYXhsZW5ndGhfX319DQphZ2U9e3tfX2lucHV0TnVtYmVyX199fQ&quot;
+        }
+      ]
+    },
+    { 
+      &quot;identifier&quot;: &quot;22483f42-95bf-984a-98a5-ee9485c85c31&quot;, 
+      &quot;path&quot;      : &quot;code.json&quot;,                              
+      &quot;metadata&quot;  : 
+        {  
+          &quot;syntaxHighlighting&quot;: &quot;json&quot;                   
+        },
+      &quot;parts&quot; : 
+      [
+        {
+          &quot;identifier&quot;: &quot;f3fc4404-3529-4962-b252-47bc4ddd02a2&quot;,
+          &quot;access&quot;: &quot;template&quot;,
+          &quot;metadata&quot;: {
+            &quot;name&quot;: &quot;Parameter in part&quot;,
+            &quot;emphasis&quot;: &quot;low&quot;
+          },
+          &quot;parameters&quot; : 
+          [
             {
               &quot;mode&quot; : &quot;any&quot;,
               &quot;identifier&quot; : &quot;__default__&quot;, 
               &quot;metadata&quot; : {
                 &quot;guiType&quot; : &quot;editor&quot;, 
                 &quot;name&quot;: &quot;code&quot;,
-                &quot;decription&quot; : &quot;Enter some code&quot;
+                &quot;description&quot; : &quot;Enter some code&quot;
               },
-              &quot;default&quot;: [&quot;aW50IG1haW4oaW50IGFyZ2MsIGNoYXIgKiphcmd2KSB7IC8vIFByaW50ICdIZWxsbyBXb3JsZCcgfQ==&quot;], // decoded: int main(int argc, char **argv) { // Print 'Hello World' }
-              &quot;validation&quot;: &quot;pattern&quot;
+              &quot;default&quot;: [&quot;aW50IG1haW4oaW50IGFyZ2MsIGNoYXIgKiphcmd2KSB7IA0KLy8gUHJpbnQgJ0hlbGxvIFdvcmxkJyANCn0&quot;]
             }
           ],
-            &quot;content&quot;   : &quot;&quot;
+          &quot;content&quot;: &quot;ew0KImNvZGVTbmlwcGV0IiA6ICJ7e19fZGVmYXVsdF9ffX0iDQp9&quot;
         }
-      ] 
+      ]
     }
   ], 
   &quot;configuration&quot; :
-    { &quot;resources.image&quot;  : &quot;name&quot;,
+    { &quot;resources.image&quot;  : &quot;name://viplab-example-image&quot;,
       &quot;resources.volume&quot; : &quot;/data/shared&quot;,
       &quot;resources.memory&quot; : &quot;1g&quot;,
-      &quot;resources.numCPUs&quot; : 1,
-      &quot;running.entrypoint&quot; : &quot;/data/bin/run.sh&quot;,
-      &quot;running.commandLineArguments&quot; : &quot;params.input&quot;
+      &quot;resources.numCPUs&quot; : 1
     }
 }
 </code></pre>
