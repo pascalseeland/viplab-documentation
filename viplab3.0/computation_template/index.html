@@ -1334,7 +1334,7 @@ With this logic it is possible to define
 </tr>
 <tr>
 <td>validation</td>
-<td>one of {"onlyone", "minone", "any"}</td>
+<td>one of {"oneof", "minone", "anyof"}</td>
 <td>must</td>
 <td>See <a href="#parameter-validation-semantics">Parameter validation semantics</a> for details</td>
 <td></td>
@@ -1543,9 +1543,9 @@ With this logic it is possible to define
 <h4 id="parameter-validation-semantics">Parameter Validation Semantics</h4>
 <p>Four types of validation are implemented at the moment:</p>
 <ul>
-<li><strong>onlyone</strong>: Only one value can be chosen. The value has to be included in <em>options</em> and <em>disabled</em> for the <em>value</em> has to be set to false (is false by default, so <em>disabled</em> can also be missing).</li>
+<li><strong>oneof</strong>: Only one value can be chosen. The value has to be included in <em>options</em> and <em>disabled</em> for the <em>value</em> has to be set to false (is false by default, so <em>disabled</em> can also be missing).</li>
 <li><strong>minone</strong>: One or more values can be chosen. The values have to be included in <em>options</em> and <em>disabled</em> for the <em>value</em>s has to be set to false (is false by default, so <em>disabled</em> can also be missing).</li>
-<li><strong>any</strong>: All of the chosen values have to be included in <em>options</em> and <em>disabled</em> for the <em>value</em>s has to be set to false (is false by default, so <em>disabled</em> can also be missing).</li>
+<li><strong>anyof</strong>: All of the chosen values have to be included in <em>options</em> and <em>disabled</em> for the <em>value</em>s has to be set to false (is false by default, so <em>disabled</em> can also be missing).</li>
 <li><strong>range</strong>: A numerical value is checked whether is is between <em>min</em> and <em>max</em>. If <em>step</em> is given a finite number of possible values is computed and the value has to be within this set.</li>
 <li><strong>pattern</strong>: A regex pattern that the text value has to fulfill.</li>
 <li><strong>none</strong>: If no validation is necessary, because there are no restraints on the value.</li>
