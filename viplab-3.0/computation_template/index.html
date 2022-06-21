@@ -138,11 +138,11 @@
 <h3 id="c-student-example">C Student Example</h3>
 <pre><code>{ 
   &quot;identifier&quot;  : &quot;11483f23-95bf-424a-98a5-ee5868c85c3e&quot;, // uuid, created by a frontend launcher
-  &quot;version&quot; : &quot;3.0.0&quot;, // version of this JSON-spec definition
+  &quot;version&quot; : &quot;3.0.0&quot; // version of this JSON-spec definition
   &quot;metadata&quot;: // information for frontend
     { 
       &quot;displayName&quot; : &quot;Aufgabe 1&quot;,  // name of computation template shown in frontend
-      &quot;description&quot; : &quot;Schreiben Sie eine C-Funktion...&quot; // short description (could be used  
+      &quot;description&quot; : &quot;Schreiben Sie eine C-Funktion...&quot;, // short description (could be used  
                                                      // as subtitle, further descriptions in &quot;parts&quot;).
     },
   &quot;environment&quot; : &quot;C&quot;, // important for interpreting configuration 
@@ -177,20 +177,20 @@
             &quot;name&quot;    : &quot;Fill in your code!&quot;,
             &quot;emphasis&quot;  : &quot;medium&quot;
           },
-          &quot;content&quot; : &quot;dm9pZCBiYXIoaW50IHdpZHRoKSB7IC8qIFNjaHJlaWJlbiBTaWUgaGllciBDb2RlLCBkZXIgImJhciIgYXVzZ2lidCB1bmQgZGllIE32Z2xpY2hrZWl0IGdpYnQgZWluZSBGZWxkYnJlaXRlIGZlc3R6dWxlZ2VuKi8KCn0K&quot;
+          &quot;content&quot; : &quot;dm9pZCBiYXIoKSB7IC8qIFNjaHJlaWJlbiBTaWUgaGllciBDb2RlLCBkZXIgImJhciIgYXVzZ2lidC4gKi8KCn0K&quot;
             // source (template)
-            // decoded: void bar(int width) { /* Schreiben Sie hier Code, der &quot;bar&quot; ausgibt und die Möglichkeit gibt eine Feldbreite festzulegen*/\n\n}\n 
+            // decoded: void bar() { /* Schreiben Sie hier Code, der &quot;bar&quot; ausgibt. */\n\n}\n 
         },
         { 
           &quot;identifier&quot;: &quot;postscript&quot;,
           &quot;access&quot;    : &quot;visible&quot;,
           &quot;metadata&quot;  :
           { 
-            &quot;name&quot;      : &quot;Info: source after your code calling bar(width) in it.&quot;,
+            &quot;name&quot;      : &quot;Info: source after your code calling bar() in it.&quot;,
             &quot;emphasis&quot;  : &quot;low&quot;,
           },
-          &quot;content&quot; : &quot;aW50IG1haW4oaW50IGFyZ2MsIGNoYXIgKiphcmd2KSB7IGJhcihhcmd2WzFdKTsgcmV0dXJuIDA7IH0=&quot; // source
-                                                // decoded: int main(int argc, char **argv) { bar(argv[1]); return 0; }
+          &quot;content&quot; : &quot;aW50IG1haW4oKSB7IGJhcigpOyByZXR1cm4gMDsgfQ&quot; // source
+                                                // decoded: int main() { bar(); return 0; }
         }
       ] // parts[]
     }
@@ -199,7 +199,7 @@
   [
     {
       &quot;mode&quot;: &quot;fixed&quot;, // in this section, the parameters can only be of mode fixed
-      &quot;identifier&quot;: &quot;__FIELDWIDTH__&quot;,
+      &quot;identifier&quot;: &quot;__STEPWIDTH__&quot;,
       &quot;metadata&quot;: {
         &quot;guiType&quot;: &quot;dropdown&quot;,
         &quot;name&quot;: &quot;fieldwidth&quot;,
@@ -207,14 +207,14 @@
       },
       &quot;options&quot;: [
         {
-          &quot;value&quot;: &quot;3&quot;,
+          &quot;value&quot;: &quot;0.05&quot;,
           &quot;selected&quot;: true
         },
         {
-          &quot;value&quot;: &quot;6&quot;
+          &quot;value&quot;: &quot;0.5&quot;
         },
         {
-          &quot;value&quot;: &quot;8&quot;
+          &quot;value&quot;: &quot;1&quot;
         }
       ],
       &quot;validation&quot;: &quot;onlyone&quot;
@@ -227,7 +227,7 @@
     &quot;checking.sources&quot;   : [&quot;codeFromStudent&quot;],    // identifier to parts
     &quot;checking.forbiddenCalls&quot;: &quot;system execve&quot;,    // forbidden call names separated by WS
     &quot;linking.flags&quot;      : &quot;-lm&quot;,                  // string
-    &quot;running.commandLineArguments&quot; : &quot;{{ __FIELDWIDTH__ }}&quot;
+    &quot;running.commandLineArguments&quot; : &quot;--stepwidth {{ __STEPWIDTH__ }}&quot;
                                                // mustache template if parameters are used
   }
 }
@@ -267,15 +267,15 @@
               &quot;identifier&quot; : &quot;__sliderSingle__&quot;, 
               &quot;metadata&quot; : {
                 &quot;guiType&quot; : &quot;slider&quot;,
-                &quot;name&quot;: &quot;Temperature&quot;,
+                &quot;name&quot;: &quot;temperature&quot;,
                 &quot;vertical&quot;: false,
                 &quot;description&quot; : &quot;How hot do you like your coffee? (in degrees Celsius) - Tip: Typical Serving Temperature lies between 65 and 70 Degrees&quot;
               },
               &quot;default&quot;: [
-                75
+                10
               ],
               &quot;min&quot;: 0,
-              &quot;max&quot;: 90,
+              &quot;max&quot;: 500,
               &quot;step&quot;: 10,
               &quot;validation&quot;: &quot;range&quot;
             }
@@ -306,10 +306,10 @@
                   &quot;selected&quot; : true
                 },
                 {
-                  &quot;value&quot; : &quot;music&quot;
+                  &quot;value&quot; : &quot;debug&quot;
                 },
                 {
-                  &quot;value&quot; : &quot;books&quot;
+                  &quot;value&quot; : &quot;make_plot&quot;
                 }
               ],
               &quot;validation&quot;: &quot;anyof&quot;
@@ -324,14 +324,14 @@
               },
               &quot;options&quot;: [
                 {
-                  &quot;value&quot; : &quot;C&quot;
+                  &quot;value&quot; : &quot;debug&quot;
                 },
                 {
-                  &quot;value&quot; : &quot;Java&quot;,
+                  &quot;value&quot; : &quot;serial&quot;,
                   &quot;selected&quot; : true
                 },
                 {
-                  &quot;value&quot; : &quot;Haskell&quot;,
+                  &quot;value&quot; : &quot;hpc&quot;,
                   &quot;disabled&quot; : true
                 },
                 {
@@ -355,7 +355,7 @@
                   &quot;disabled&quot; : true
                 },
                 {
-                  &quot;value&quot; : &quot;never&quot;,
+                  &quot;value&quot; : &quot;1p&quot;,
                   &quot;selected&quot; : true
                 },
                 {
@@ -363,13 +363,13 @@
                   &quot;value&quot; : &quot;Once a day&quot;
                 },
                 {
-                  &quot;value&quot; : &quot;Twice a day&quot;
+                  &quot;value&quot; : &quot;1pncmin&quot;
                 },
                 {
-                  &quot;value&quot; : &quot;Three times a day&quot;
+                  &quot;value&quot; : &quot;2p&quot;
                 },
                 {
-                  &quot;value&quot; : &quot;More than three times a day&quot;
+                  &quot;value&quot; : &quot;2p1c&quot;
                 }
               ],
               &quot;validation&quot;: &quot;oneof&quot;
@@ -393,17 +393,17 @@
                   &quot;selected&quot; : true
                 },
                 {
-                  &quot;value&quot; : &quot;White Christmas&quot;
+                  &quot;value&quot; : &quot;1pnc&quot;
                 },
                 {
-                  &quot;value&quot; : &quot;Winter Woderland&quot;
+                  &quot;value&quot; : &quot;1pncmin&quot;
                 },
                 {
-                  &quot;value&quot; : &quot;Thats Christmas To Me&quot;, 
+                  &quot;value&quot; : &quot;2p&quot;, 
                   &quot;selected&quot; : true
                 },
                 {
-                  &quot;value&quot; : &quot;O Come All Ye Faithful&quot;, 
+                  &quot;value&quot; : &quot;2p1c&quot;, 
                   &quot;disabled&quot; : true
                 }
               ], 
@@ -419,7 +419,7 @@
               },
               &quot;options&quot;: [
                 {
-                  &quot;value&quot; : &quot;Spiders&quot;,
+                  &quot;value&quot; : &quot;verbose&quot;,
                   &quot;selected&quot; : true
                 },
                 {
@@ -427,7 +427,7 @@
                   &quot;value&quot; : &quot;All kinds of Bugs&quot;
                 },
                 {
-                  &quot;value&quot; : &quot;I never dislike anything!&quot;
+                  &quot;value&quot; : &quot;make_plot&quot;
                 }
               ], 
               &quot;validation&quot;: &quot;anyof&quot;
@@ -437,7 +437,7 @@
               &quot;identifier&quot; : &quot;__sliderMultiple__&quot;, 
               &quot;metadata&quot; : {
                 &quot;guiType&quot; : &quot;slider&quot;,
-                &quot;name&quot;: &quot;random numbers&quot;,
+                &quot;name&quot;: &quot;temperature&quot;,
                 &quot;vertical&quot;: true,
                 &quot;description&quot; : &quot;Choose three random numbers to be output by the container&quot;
               },
@@ -461,7 +461,7 @@
                 &quot;description&quot; : &quot;Enter your name&quot;
               },
               &quot;default&quot; : [&quot;&quot;],
-              &quot;validation&quot;: &quot;none&quot;
+              &quot;validation&quot;: &quot;pattern&quot;
             },
             {
               &quot;mode&quot; : &quot;any&quot;,
@@ -485,10 +485,10 @@
                 &quot;name&quot;: &quot;Age&quot;,
                 &quot;description&quot; : &quot;Enter your current age&quot;
               },
-              &quot;default&quot;: [25],
+              &quot;default&quot;: [10],
               &quot;min&quot;: 0,
-              &quot;max&quot;: 100,
-              &quot;step&quot;: 1,
+              &quot;max&quot;: 500,
+              &quot;step&quot;: 0.1,
               &quot;validation&quot;: &quot;range&quot;
             }
           ],
